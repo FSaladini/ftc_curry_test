@@ -8,6 +8,7 @@ import folium
 
 import matplotlib.pyplot as plt
 
+from datetime import datetime
 from haversine import haversine
 from streamlit_folium import folium_static
 from PIL import Image
@@ -135,6 +136,7 @@ def get_delivery_time_by_city( df ):
 # ===========================
 # Título
 # ===========================
+st.set_page_config(page_title = "Visão Restaurantes", layout = 'wide')
 st.header("Marketplace - Visão Restaurantes")  ## Main Title
 
 # ===========================
@@ -150,9 +152,9 @@ st.sidebar.markdown( """---""" )
 st.sidebar.markdown( "## Selecione um data limite" )
 date_slider = st.sidebar.slider(
         "Até qual valor?",
-        value = pd.datetime( 2022, 4, 13 ),
-        min_value=pd.datetime( 2022, 2, 11),
-        max_value=pd.datetime( 2022, 5, 6 ), 
+        value = datetime( 2022, 4, 13 ),
+        min_value=datetime( 2022, 2, 11),
+        max_value=datetime( 2022, 5, 6 ), 
         format="DD-MM-YYYY"
     )
 
@@ -188,7 +190,7 @@ df = df.loc[df['City'].isin( city_options ), :]
 # Layout
 # ===========================
 # Tabs
-tab1, tab2 = st.tabs( ['Visão Gerencial', '_'] )
+tab1, tab2 = st.tabs( ['Visão Gerencial', ' '] )
 
 
 # A maior idade dos entregadomarkdownres
